@@ -11,7 +11,7 @@ with open("README.md") as f:
 
 setup(
     name=name,
-    version="1.0",
+    version="1.1",
     description="Event util base on Redis",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -20,7 +20,7 @@ setup(
     keywords="redis event util".split(),
     url="https://github.com/{}/{}".format(author, name),
     py_modules=["revent"],
-    install_requires="redis yaml".split(),
+    install_requires="redis pyyaml".split(),
     classifiers=[
         "Environment :: Console",
         "Programming Language :: Python :: 3",
