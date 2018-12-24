@@ -68,11 +68,13 @@ def loop():
     for i in pubsub.listen():
         if i["type"] != "message":
             continue
-        key = i["channel"]
-        data = json.loads(i["data"])
+        try:
+            data = json.loads(i["data"])
+        except json.JSONDecodeError:
+            continue
         if not isinstance(data, dict):
             continue
-        for fn in callbacks[key]:
+        for fn in callbacks[i["channel"]]:
             kwargs = data.copy()
             c = fn.__code__
             args = [kwargs.pop(c.co_varnames[i], None)
