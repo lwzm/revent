@@ -7,13 +7,13 @@ import sys
 import traceback
 
 import redis
-import yaml
 
 
 def init_redis_cli():
     cfg = {"decode_responses": True}
     try:
         with open(os.environ.get("REDIS_YAML", "etc/redis.yaml")) as f:
+            import yaml
             cfg.update(yaml.load(f))
     except FileNotFoundError:
         pass
