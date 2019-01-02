@@ -9,9 +9,13 @@ import redis
 
 
 def init_redis_cli():
-    cfg = {"decode_responses": True}
+    host = os.environ.get("REDIS_HOST")
+    port = os.environ.get("REDIS_PORT")
+    port = port and int(port)
+    decode_responses = True
+    cfg = {k: v for k, v in locals().items() if v is not None}
     try:
-        with open(os.environ.get("REDIS_YAML", "etc/redis.yaml")) as f:
+        with open("etc/redis.yaml") as f:
             import yaml
             cfg.update(yaml.load(f))
     except FileNotFoundError:
