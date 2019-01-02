@@ -3,7 +3,6 @@
 import collections
 import json
 import os
-import sys
 import traceback
 
 import redis
@@ -26,9 +25,9 @@ callbacks = collections.defaultdict(set)
 ns = "event:"
 
 
-def emit(key, **kw):
-    data = json.dumps(kw, default=str, ensure_ascii=False)
-    return redis_cli.publish(ns + key, data)
+def emit(key, **kwargs):
+    payload = json.dumps(kwargs, ensure_ascii=False)
+    return redis_cli.publish(ns + key, payload)
 
 
 def subscribe(key, func):
