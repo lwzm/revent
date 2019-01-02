@@ -9,7 +9,7 @@ def t2(c):
 
 @sub
 @sub("foo")
-def test(a, b, **kw):
+def test(a, b=999, **kw):
     print("test", a, b, kw)
 
 

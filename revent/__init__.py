@@ -53,7 +53,13 @@ def sub(key):
     def event_bar(a, b):
         ...
 
+    # but at this version, do not use default value, it has no effect
+    @sub
+    def event_bar(a, b="x"):
+        `b` will set to None if event payload has no `b`,
+        so declare default value "x" is redundant
     """
+
     if hasattr(key, "__code__"):
         func = key
         return sub(func.__name__)(func)
