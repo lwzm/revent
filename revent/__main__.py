@@ -7,6 +7,9 @@ from . import sub, loop
 
 
 def main():
+    modules = sys.argv[1:]
+    if not modules:
+        return print(f"usage:\npython -m revent mod_1 [, mod_2, mod_3, ...]")
     for module_name in sys.argv[1:]:
         module = importlib.import_module(module_name)
         for name in dir(module):
