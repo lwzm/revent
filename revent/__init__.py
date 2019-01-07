@@ -9,18 +9,12 @@ import redis
 
 
 def init_redis_cli():
-    host = os.environ.get("REDIS_HOST")
-    port = os.environ.get("REDIS_PORT")
-    port = port and int(port)
-    decode_responses = True
-    cfg = {k: v for k, v in locals().items() if v is not None}
-    try:
-        with open("etc/redis.yaml") as f:
-            import yaml
-            cfg.update(yaml.load(f))
-    except FileNotFoundError:
-        pass
-    return redis.Redis(**cfg)
+    """
+    redis.Redis.from_url(None)  # default is localhost:6379
+    redis.Redis.from_url("redis://[:password]@redis.host[:6379]/0")
+    """
+    url = os.environ.get("URL_REDIS")
+    return redis.Redis.from_url(url)
 
 
 redis_cli = init_redis_cli()

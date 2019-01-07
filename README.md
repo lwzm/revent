@@ -33,3 +33,9 @@ or auto subscribe events and run
 python -m revent module_xxx module_yyy
 ```
 
+### optional environment variable
+
+```
+URL_REDIS="redis://[:PASSWORD@]REDIS_HOST[:6379][/DB_INDEX]"
+URL_REDIS="redis://:xxxx@redis.host:12345/2"
+```
