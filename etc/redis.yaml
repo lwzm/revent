@@ -1,5 +1,0 @@
-decode_responses: true
-#host: redis
-#port: 6379
-#password: xx
-#unix_socket_path: run/redis.sock
