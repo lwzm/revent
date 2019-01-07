@@ -33,7 +33,7 @@ def subscribe(key, func):
     def f1(a, b): pass
     def f1(a, b, **kw): pass
     """
-    key = ns + key
+    key = (ns + key).encode()
     callbacks[key].add(func)
     pubsub.subscribe(key)
 
@@ -72,7 +72,7 @@ def loop():
         if i["type"] != "message":
             continue
         try:
-            data = json.loads(i["data"])
+            data = json.loads(i["data"].decode())
         except json.JSONDecodeError:
             continue
         if not isinstance(data, dict):
