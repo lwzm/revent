@@ -13,7 +13,7 @@ def init_redis_cli():
     redis.Redis.from_url(None)  # default is localhost:6379
     redis.Redis.from_url("redis://[:password]@redis.host[:6379]/0")
     """
-    url = os.environ.get("URL_REDIS")
+    url = os.environ.get("URL_REDIS", "redis://")
     return redis.Redis.from_url(url)
 
 
