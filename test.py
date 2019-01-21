@@ -7,13 +7,15 @@ def t(a, b):
 def t2(c):
     print(c)
 
-@sub
-@sub("foo")
-def test(a, b=999, **kw):
-    print("test", a, b, kw)
+def i():
+    @sub
+    @sub("foo")
+    def test(a, b=999, **kw):
+        print("test", a, b, kw)
 
 
 if __name__ == '__main__':
+    i()
     loop()
     """
     or at command line:
